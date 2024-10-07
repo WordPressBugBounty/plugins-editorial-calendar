@@ -20,7 +20,7 @@
 Plugin Name: WordPress Editorial Calendar
 Plugin URI: https://editorialcalendarwp.com/
 Description: Editorial Calendar allows you to view all your posts, schedule post, make quick edits, and manage your blog by dragging and dropping posts.
-Version: 3.8.6
+Version: 3.8.7
 Author: Editorial Calendar Team
 Author URI: https://editorialcalendarwp.com/
 Text Domain: editorial-calendar
@@ -607,7 +607,7 @@ class EdCal
                 global $post;
                 $args = array(
                     'posts_per_page' => -1,
-                    'post_status' => "publish&future&draft",
+                    'post_status' => array('publish', 'draft', 'future'),
                     'post_parent' => null // any parent
                 );
 
@@ -823,7 +823,7 @@ class EdCal
                     * we want to hide them from the calendar. 
                     * We also want to hide posts with type 'inherit'
                     */
-                    return;
+                    //return;
                 }
 
                 /* 
@@ -860,42 +860,40 @@ class EdCal
                     $slugs .= $category->slug . ' ';
                 }
 
-        ?>
-        {
-        "date" : "<?php the_time('d') ?><?php the_time('m') ?><?php the_time('Y') ?>",
-        "date_gmt" : "<?php echo $post_date_gmt; ?>",
-        "time" : "<?php echo trim(get_the_time()) ?>",
-        "formattedtime" : "<?php $this->edcal_json_encode(the_time($timeFormat)) ?>",
-        "sticky" : "<?php echo is_sticky($post->ID) ?>",
-        "url" : "<?php $this->edcal_json_encode(the_permalink()) ?>",
-        "status" : "<?php echo get_post_status() ?>",
-        "orig_status" : "<?php echo get_post_status() ?>",
-        "title" : <?php echo $this->edcal_json_encode(isset($post->post_title) ? $post->post_title : '') ?>,
-        "author" : <?php echo $this->edcal_json_encode(get_the_author()) ?>,
-        "type" : "<?php echo get_post_type($post) ?>",
-        "typeTitle" : "<?php echo $postTypeTitle ?>",
-        "slugs" : <?php echo $this->edcal_json_encode($slugs) ?>,
 
-        <?php if (current_user_can('edit_post', $post->ID)) { ?>
-            "editlink" : "<?php echo get_edit_post_link($post->ID) ?>",
-        <?php } ?>
+                $edcalPost = [];
+                $edcalPost['date'] = get_the_time('d').get_the_time('m').get_the_time('Y');
+                $edcalPost['date_gmt'] = $post_date_gmt;
+                $edcalPost['time'] = trim(get_the_time());
+                $edcalPost['formattedtime'] = get_the_time($timeFormat);
+                $edcalPost['sticky'] = is_sticky($post->ID);
+                $edcalPost['url'] = get_the_permalink();
+                $edcalPost['status'] = get_post_status();
+                $edcalPost['orig_status'] = get_post_status();
+                $edcalPost['title'] = isset($post->post_title) ? $post->post_title : '';
+                $edcalPost['author'] = get_the_author();
+                $edcalPost['type'] = get_post_type($post);
+                $edcalPost['typeTitle'] = $postTypeTitle;
+                $edcalPost['slugs'] = $slugs;
 
-        <?php if (current_user_can('delete_post', $post->ID)) { ?>
-            "dellink" : "javascript:edcal.deletePost(<?php echo $post->ID ?>)",
-        <?php } ?>
+                if (current_user_can('edit_post', $post->ID)) {
+                    $edcalPost['editlink'] = get_edit_post_link($post->ID);
+                }
+                if (current_user_can('delete_post', $post->ID)) {
+                    $edcalPost['dellink'] = "javascript:edcal.deletePost(".$post->ID.")";
+                }
 
-        "permalink" : "<?php echo get_permalink($post->ID) ?>",
-        "id" : "<?php the_ID(); ?>",
-        "hash" : "<?php echo hash('md5', strval(get_the_ID())); ?>"
+                $edcalPost['permalink'] = get_permalink($post->ID);
+                $edcalPost['id'] = get_the_ID();
+                $edcalPost['hash'] = hash('md5', strval(get_the_ID()));
 
-        <?php if ($fullPost) : ?>
-            , "content" : <?php echo $this->edcal_json_encode($post->post_content) ?>
+                if ($fullPost) {
+                    $edcalPost['content'] = $post->post_content;
+                }
 
-        <?php endif; ?>
-        }
-        <?php
-                if ($addComma) {
-        ?>,<?php
+                if ( !empty($edcalPost) ) {
+                    echo json_encode($edcalPost);
+                    echo ($addComma) ? ',': '';
                 }
             }
 

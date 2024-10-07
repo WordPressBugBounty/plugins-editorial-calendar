@@ -4,7 +4,7 @@ Tags: schedule post, editorial calendar, quickedit post, manage post
 Requires at least: 4.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 3.8.6
+Stable tag: 3.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -194,6 +194,9 @@ The `edcal_default_status` property controls the default status for new posts in
 4. Drag and drop posts to easily change dates and take control of your blog.
 
 == Changelog ==
+
+= 3.8.7 =
+* Updated the way the plugin generates JSON data to minimize parsing errors.
 
 = 3.8.6 =
 * Fixed missed schedule.
