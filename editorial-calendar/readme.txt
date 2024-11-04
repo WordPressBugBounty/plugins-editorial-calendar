@@ -4,7 +4,7 @@ Tags: schedule post, editorial calendar, quickedit post, manage post
 Requires at least: 4.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 3.8.7
+Stable tag: 3.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,31 +14,39 @@ Editorial Calendar allows you to view all your posts, schedule post, make quick 
 
 Did you remember to write a post for next Tuesday?  What about the Tuesday after that?  WordPress doesn't make it easy to see when your posts are scheduled.  The editorial calendar gives you an overview of your blog and when each post will be published.  You can drag and drop to move posts, edit posts right in the calendar, and manage your entire blog.  
 
+<h4>Visualize Your Content Strategy</h4>
+
+Intuitive drag-and-drop calendar interface gives you a bird's-eye view of your content strategy. Easily manage all your articles, blog posts, and multimedia content in one central place.
+
+<h4>Stay Organized, Stay Consistent!</h4>
+
+Struggling to keep track of your scheduled posts? The Editorial Calendar plugin simplifies content management, allowing you to see, schedule, and manage all posts in one streamlined view. Edit post details directly in the calendar and ensure your content stays on track effortlessly.
+
+<h4>Streamlined Workflow</h4>
+
+Quickly create new posts or edit your current posts’ titles, contents, and publishing times—right from the Editorial Calendar! Your workflow has never been smoother.
+
 <h4>Watch the video</h4>
 
 [vimeo https://vimeo.com/272028435]
 
-<h4>Try it out</h4>
-Try the calendar before you install it.  Check out the demo installation at <a href="http://www.zackgrossbart.com/extras/sandbox/wp-admin/edit.php?page=cal">Zack's WordPress Sandbox</a>.  You can log in with the username and password test.
+<h4>Key Features</h4>
 
+👉 At-a-Glance Overview: View all upcoming posts and their scheduled dates in one simple layout.
+👉 Drag-and-Drop Scheduling: Easily move posts to new dates with a quick drag and drop.
+👉 Drafts Drawer: Keep all your drafts handy, organized, and ready for scheduling.
+👉 Quick Edits: Modify titles, content, and post times directly within the calendar.
+👉 Manage Drafts & Published Posts: Seamlessly handle both drafts and live posts.
+👉 Post Status Visibility: Instantly see the status of each post.
+👉 Collaborate with Multiple Authors: Perfect for teams with multiple contributors.
 
-<h4>Features</h4>
+<h4>Join Our Community</h4>
 
-1. See all of your posts and when they'll be posted.
-1. Drag and drop to change your post dates.
-1. Manage your drafts with our new drafts drawer.
-1. Quickedit post titles, contents, and times.
-1. Publish posts or manage drafts.
-1. Easily see the status of your posts.
-1. Manage posts from multiple authors.
+Your feedback drives our improvements! If you have questions, feature requests, or ideas, reach out to us at help@editorialcalendarwp.com.
 
-<h4>Make it better</h4>
+<h4>Available in Multiple Languages</h4>
 
-Thank you to everyone who has given us feedback and helped us improve this plugin.  If you have questions, problems, or ideas for new features please let us know at <a href="mailto:wp-edcal@googlegroups.com">wp-edcal@googlegroups.com</a>.
-
-<h4>Translate it</h4>
-
-Again, thanks to all who have already helped make the plugin available in so many languages. If you would like to help us translate the plugin into your language, or if you use it in a language other than English already and would like to help us keep it up to date, please write to us at <a href="mailto:wp-edcal@googlegroups.com">wp-edcal@googlegroups.com</a>
+Thanks to our multilingual contributors! To keep translations up to date or bring the plugin to new languages, please contact us at help@editorialcalendarwp.com.
 
 == Installation ==
 
@@ -194,6 +202,10 @@ The `edcal_default_status` property controls the default status for new posts in
 4. Drag and drop posts to easily change dates and take control of your blog.
 
 == Changelog ==
+
+= 3.8.8 =
+* Fixed posts cannot be moved to unscheduled posts in `pending`.
+* Fixed posts in `pending` not displayed anymore.
 
 = 3.8.7 =
 * Updated the way the plugin generates JSON data to minimize parsing errors.

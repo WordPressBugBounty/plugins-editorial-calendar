@@ -20,7 +20,7 @@
 Plugin Name: WordPress Editorial Calendar
 Plugin URI: https://editorialcalendarwp.com/
 Description: Editorial Calendar allows you to view all your posts, schedule post, make quick edits, and manage your blog by dragging and dropping posts.
-Version: 3.8.7
+Version: 3.8.8
 Author: Editorial Calendar Team
 Author URI: https://editorialcalendarwp.com/
 Text Domain: editorial-calendar
@@ -607,7 +607,7 @@ class EdCal
                 global $post;
                 $args = array(
                     'posts_per_page' => -1,
-                    'post_status' => array('publish', 'draft', 'future'),
+                    'post_status' => array('publish', 'draft', 'future', 'pending'),
                     'post_parent' => null // any parent
                 );
 
@@ -1343,13 +1343,13 @@ class EdCal
 
                     // Update counts for the post's terms.
                     foreach ((array) get_object_taxonomies('post') as $taxonomy) {
-                        $tt_ids = wp_get_object_terms($post_id, $taxonomy, 'fields=tt_ids');
+                        $tt_ids = wp_get_object_terms($edcal_postid, $taxonomy, 'fields=tt_ids');
                         wp_update_term_count($tt_ids, $taxonomy);
                     }
 
                     do_action('edit_post', $edcal_postid, $post);
-                    do_action('save_post', $edcal_postid, $post);
-                    do_action('wp_insert_post', $edcal_postid, $post);
+                    do_action('save_post', $edcal_postid, $post, true);
+                    do_action('wp_insert_post', $edcal_postid, $post, true);
                 }
 
                 // die(var_dump($updated_post).'success!');
