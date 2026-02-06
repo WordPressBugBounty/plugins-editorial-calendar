@@ -17,10 +17,10 @@
  ******************************************************************************/
 
 /*
-Plugin Name: WordPress Editorial Calendar
+Plugin Name: Editorial Calendar
 Plugin URI: https://editorialcalendarwp.com/
 Description: Editorial Calendar allows you to view all your posts, schedule post, make quick edits, and manage your blog by dragging and dropping posts.
-Version: 3.8.8
+Version: 3.9.0
 Author: Editorial Calendar Team
 Author URI: https://editorialcalendarwp.com/
 Text Domain: editorial-calendar
@@ -607,7 +607,7 @@ class EdCal
                 global $post;
                 $args = array(
                     'posts_per_page' => -1,
-                    'post_status' => array('publish', 'draft', 'future', 'pending'),
+                    'post_status' => array('publish', 'draft', 'future', 'pending', 'private', 'password_protected'),
                     'post_parent' => null // any parent
                 );
 
@@ -705,7 +705,7 @@ class EdCal
                 $this->edcal_addNoCacheHeaders();
 
                 // If nonce fails, return
-                if (!$this->edcal_checknonce()) {
+                if (!$this->edcal_checknonce() || !current_user_can('edit_post', $_GET['postid'])) {
                     die();
                 }
 
@@ -876,6 +876,9 @@ class EdCal
                 $edcalPost['typeTitle'] = $postTypeTitle;
                 $edcalPost['slugs'] = $slugs;
 
+                // Add label to Password protected
+                $edcalPost['title'] .= !empty($post->post_password) ? ' [password-protected]' : '';
+
                 if (current_user_can('edit_post', $post->ID)) {
                     $edcalPost['editlink'] = get_edit_post_link($post->ID);
                 }
@@ -959,7 +962,7 @@ class EdCal
             */
             function edcal_changetitle()
             {
-                if (!$this->edcal_checknonce()) {
+                if (!$this->edcal_checknonce() || !current_user_can('edit_post', $_GET['postid'])) {
                     die();
                 }
 

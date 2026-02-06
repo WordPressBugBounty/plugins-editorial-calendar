@@ -2,11 +2,12 @@
 Contributors: marketingfire
 Tags: schedule post, editorial calendar, quickedit post, manage post
 Requires at least: 4.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 3.8.8
+Stable tag: 3.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+0ddcemmihs4a843ekhaoofzosrunf4bl
 
 Editorial Calendar allows you to view all your posts, schedule post, make quick edits, and manage your blog by dragging and dropping posts.
 
@@ -65,16 +66,16 @@ An editorial calendar is simply a plan for your blog.  It is thinking ahead abou
 
 From time to time people write articles about the editorial calendar.  We appreciate every one.
 
-<a href="http://www.dailyblogtips.com/5-reasons-youll-love-the-wordpress-editorial-calendar/">5 Reasons You’ll Love the WordPress Editorial Calendar</a> by <a href="http://www.successfulblogging.com/">Annabel Candy</a>
+<a href="http://www.dailyblogtips.com/5-reasons-youll-love-the-wordpress-editorial-calendar/">5 Reasons You’ll Love the Editorial Calendar</a> by <a href="http://www.successfulblogging.com/">Annabel Candy</a>
 
 <a href="http://www.chrisbrogan.com/use-an-editorial-calendar/">Use An Editorial Calendar</a> by <a href="http://www.chrisbrogan.com">Chris Brogan</a>
 
 <a href="http://www.smashingmagazine.com/2010/08/30/the-importance-of-consistency-using-editorial-calendars-and-style-guides/">Blogging For Web Designers: Editorial Calendars and Style Guides</a> by <a href="http://jessica.smashingmagazine.com/">Jessica Bordeau</a> at <a href="http://www.smashingmagazine.com/">Smashing Magazine</a>
 
 <a href="http://mydigitalinternet.com/2010/editorial-calendar-wordpress-plugin-review">
-Editorial Calendar WordPress plugin review</a> by Stephen Duckworth at <a href="http://mydigitalinternet.com/">My Digital Internet</a>
+Editorial Calendar plugin review</a> by Stephen Duckworth at <a href="http://mydigitalinternet.com/">My Digital Internet</a>
 
-<a href="http://www.disruptiveconversations.com/2010/09/brogan-is-right-the-editorial-calendar-wordpress-plugin-truly-rocks.html">Brogan is right - the "Editorial Calendar" WordPress plugin truly rocks!</a> by <a href="http://www.danyork.com/">Dan York</a>
+<a href="http://www.disruptiveconversations.com/2010/09/brogan-is-right-the-editorial-calendar-wordpress-plugin-truly-rocks.html">Brogan is right - the "Editorial Calendar" plugin truly rocks!</a> by <a href="http://www.danyork.com/">Dan York</a>
 
 <a href="http://www.socialbrandingblog.com/637/editorial-calendar-plugin-for-wordpress/">Editorial Calendar Plugin for WordPress</a> by <a href="http://www.socialbrandingblog.com/">Steve Campbell</a>
 
@@ -101,7 +102,7 @@ Check out our demo installation at <a href="http://www.zackgrossbart.com/extras/
 
 = How do I get help using the calendar? =
 
-The <a href="http://groups.google.com/group/wp-edcal">WordPress Editorial Calendar Google Group</a> is a good place to ask questions, find answers, and post feedback.  We also follow the WordPress.org forum <a href="http://wordpress.org/tags/editorial-calendar?forum_id=10">Editorial Calendar discussion</a>. 
+The <a href="http://groups.google.com/group/wp-edcal"> Editorial Calendar Google Group</a> is a good place to ask questions, find answers, and post feedback.  We also follow the WordPress.org forum <a href="http://wordpress.org/tags/editorial-calendar?forum_id=10">Editorial Calendar discussion</a>. 
 
 = How do I navigate in the calendar? =
 
@@ -202,6 +203,13 @@ The `edcal_default_status` property controls the default status for new posts in
 4. Drag and drop posts to easily change dates and take control of your blog.
 
 == Changelog ==
+
+= 3.9.0 =
+* Fixed issue with private post label not displaying for private posts.
+* Added [password-protected] label for password-protected posts.
+ 
+= 3.8.9 =
+* Fixed Broken Access Control Vulnerability
 
 = 3.8.8 =
 * Fixed posts cannot be moved to unscheduled posts in `pending`.
