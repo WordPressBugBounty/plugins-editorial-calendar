@@ -20,7 +20,7 @@
 Plugin Name: Editorial Calendar
 Plugin URI: https://editorialcalendarwp.com/
 Description: Editorial Calendar allows you to view all your posts, schedule post, make quick edits, and manage your blog by dragging and dropping posts.
-Version: 3.9.0
+Version: 3.9.1
 Author: Editorial Calendar Team
 Author URI: https://editorialcalendarwp.com/
 Text Domain: editorial-calendar
